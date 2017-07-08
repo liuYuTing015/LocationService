@@ -29,8 +29,8 @@ uploadArchives {
         def mavenRepositoryPath = file(getProperty('aar.locationlibrary'))
         repository(url: "file://${mavenRepositoryPath.absolutePath}")
         pom.project {
-            groupId "com.location.app.locationlibrary"
-            artifactId "service"
+            groupId "com.location.app.locationservice"
+            artifactId "library"
             version 1.0
         }
     }
