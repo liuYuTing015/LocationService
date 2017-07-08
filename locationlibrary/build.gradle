@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin : 'maven'
 
 android {
     compileSdkVersion 25
@@ -21,6 +24,18 @@ android {
     }
 }
 
+uploadArchives {
+    repositories.mavenDeployer {
+        def mavenRepositoryPath = file(getProperty('aar.locationlibrary'))
+        repository(url: "file://${mavenRepositoryPath.absolutePath}")
+        pom.project {
+            groupId "com.location.app.locationlibrary"
+            artifactId "service"
+            version 1.0
+        }
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -28,4 +43,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.5'
 }
