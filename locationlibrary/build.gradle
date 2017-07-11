@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin : 'maven'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 25
@@ -29,9 +29,9 @@ uploadArchives {
         def mavenRepositoryPath = file(getProperty('aar.locationlibrary'))
         repository(url: "file://${mavenRepositoryPath.absolutePath}")
         pom.project {
-            groupId "com.location.app.locationservice"
-            artifactId "library"
-            version 1.0
+            groupId "com.location.app.locationlibrary"
+            artifactId "group"
+            version 2.0
         }
     }
 }
